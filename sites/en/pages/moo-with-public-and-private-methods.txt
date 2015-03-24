@@ -55,7 +55,7 @@ has x => (is => 'rw');
 has y => (is => 'rw');
 
 sub coordinates {
-   my ($self) = @_;
+   my $self = shift;
 
    return sprintf "[%s, %s]", $self->x, $self->y;
 }
@@ -92,7 +92,7 @@ I think there is nothing special in this example, but I wanted to show another s
 
 <code lang="perl">
 sub distance_from_o {
-   my ($self) = @_;
+   my $self = shift;
 
    my $sqr = $self->x ** 2 + $self->y ** 2;
    return $sqr ** 0.5
@@ -135,7 +135,8 @@ This is the method we added to the Point.pm file:
 
 <code lang="perl">
 sub move_by {
-    my ($self, $dx, $dy) = @_;
+    my $self = shift;
+    my ($dx, $dy) = @_;
 
     my $x_temp = $self->x;
     $x_temp += $dx;
